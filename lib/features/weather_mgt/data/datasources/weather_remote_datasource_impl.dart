@@ -12,10 +12,10 @@ class WeatherRemoteDatasourceImpl extends WeatherRemoteDatasource {
       final response = await Dio().get(AppUrls.getWeatherUrl);
       return WeatherModel.fromJSON(response.data);
     } on DioError catch (e) {
-      if(e.response?.statusCode != null){
+      if (e.response?.statusCode != null) {
         throw NetworkException(e.response!.statusCode.toString());
       } else {
-         throw NetworkException("400");
+        throw NetworkException("400");
       }
     } catch (err) {
       throw NetworkException("400");

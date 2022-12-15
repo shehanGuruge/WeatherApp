@@ -42,14 +42,24 @@ class WeatherDetailsDisplayPage extends StatelessWidget {
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
-                          height: 8,
+                          height: 15,
                         ),
                         Text(
-                          data?.country != null
-                              ? data!.country.toUpperCase()
+                          data?.weatherType != null
+                              ? data!.weatherType.toUpperCase()
                               : "",
                           style: const TextStyle(
                             fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          data?.weatherDescription != null
+                              ? data!.weatherDescription
+                              : "",
+                          style: const TextStyle(
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: Colors.grey,
                           ),
@@ -58,15 +68,37 @@ class WeatherDetailsDisplayPage extends StatelessWidget {
                           height: 50,
                         ),
                         Text(
-                          "${data?.temp_c != null ? data!.temp_c : 0} \u2103",
+                          "${data?.temp != null ? data!.temp : 0} \u2103",
                           style: const TextStyle(
-                              fontSize: 45, fontWeight: FontWeight.bold),
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Text(
-                          "${data?.temp_f != null ? data!.temp_f : 0} \u2109",
-                          style: const TextStyle(
-                              fontSize: 45, fontWeight: FontWeight.bold),
+                        const SizedBox(
+                          height: 10,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Min: ${data?.tempMin != null ? data!.tempMin : 0} \u2103",
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              " / Max: ${data?.tempMax != null ? data!.tempMax : 0} \u2103",
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   );
